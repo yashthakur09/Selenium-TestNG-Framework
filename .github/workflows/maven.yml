@@ -35,7 +35,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: Test Reports
+        name: Test Report
         path: report.html
         
     - name: Test Execution Status
