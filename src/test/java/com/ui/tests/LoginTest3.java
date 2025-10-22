@@ -30,7 +30,7 @@ public class LoginTest3 extends TestBase {
 	@Test(description = "Verify login functionality", groups = { "e2e", "sanity" }, dataProviderClass=com.ui.dataproviders.LoginDataProvider.class,dataProvider="LoginExcelTestDataProvider",retryAnalyzer=com.ui.listeners.MyRetryAnalyzer.class)
 	public void login3(User user) {
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(),user.getPassword()).getusername(),
-				"Yash Thakur");
+				"Yash1 Thakur");
 	}
 
 }
