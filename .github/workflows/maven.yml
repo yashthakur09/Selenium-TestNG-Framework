@@ -45,6 +45,10 @@ jobs:
         name: Test Reports
         path: report.html
         
+    - name: Test Execution Status
+      if: always()
+      run: echo "Test Execution Completed"
+        
     - name: Copy Report to gh-pages Folder
       if: always()
 
