@@ -1,32 +1,36 @@
 package com.ui.tests;
 
-public class LoginTest {
+import static org.testng.Assert.assertEquals;
 
-	public static void main(String[] args) throws Exception{
-//		WebDriver driver = new ChromeDriver();
-//		BrowserUtility bu=new BrowserUtility(driver);
-//		bu.goToWebsite("http://www.automationpractice.pl/index.php");
-//		bu.maximizeWindow();
-//		
-//		By locator=By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a");
-//		bu.clickOn(locator);
-////		bu.clickOn(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a"));
-//		
-//		By email=By.id("email");
-//		bu.enterText(email, "sohoyoy526@gamegta.com");
-//		
-//		By passwd=By.id("passwd");
-//		bu.enterText(passwd, "Slice12345");
-//		
-//		By signInBtn=By.id("SubmitLogin");
-//		bu.clickOn(signInBtn);
-//		
-//		
-//		
-//		Thread.sleep(5000);
-//		driver.quit();
-//		
-		
+import org.apache.logging.log4j.Logger;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import com.ui.pojo.User;
+import com.utility.LoggerUtility;
+
+
+@Listeners(com.ui.listeners.TestListeners.class)
+public class LoginTest extends TestBase {
+	
+	Logger logger=LoggerUtility.getLogger(this.getClass());
+
+	@Test(description = "Verify login functionality", groups = { "e2e", "sanity" }, dataProviderClass=com.ui.dataproviders.LoginDataProvider.class,dataProvider="LoginTestDataProvider")
+	public void login(User user) {
+		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(),user.getPassword()).getusername(),
+				"Yash Thakur");
 	}
+	
+//	@Test(description = "Verify login functionality", groups = { "e2e", "sanity" }, dataProviderClass=com.ui.dataproviders.LoginDataProvider.class,dataProvider="LoginCSVTestDataProvider")
+//	public void login2(User user) {
+//		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(),user.getPassword()).getusername(),
+//				"Yash Thakur");
+//	}
+//	
+//	@Test(description = "Verify login functionality", groups = { "e2e", "sanity" }, dataProviderClass=com.ui.dataproviders.LoginDataProvider.class,dataProvider="LoginExcelTestDataProvider",retryAnalyzer=com.ui.listeners.MyRetryAnalyzer.class)
+//	public void login3(User user) {
+//		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(),user.getPassword()).getusername(),
+//				"Yash1 Thakur");
+//	}
 
 }

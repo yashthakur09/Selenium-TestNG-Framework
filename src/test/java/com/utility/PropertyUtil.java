@@ -9,7 +9,7 @@ import com.constants.Env;
 public class PropertyUtil{
 	
 	public static String readProperties(Env env, String url) {
-		File propFile=new File(System.getProperty("user.dir")+"\\config\\"+env+".properties");
+		File propFile=new File(System.getProperty("user.dir")+"//config//"+env+".properties");
 		FileReader fileReader = null;
 		Properties properties=new Properties();
 		try {
